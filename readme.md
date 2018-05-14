@@ -14,4 +14,14 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Access `http://jaeger-demo.localhost` in your browser then go to `http://jaeger-ui.localhost` and check the traces. The only modified file is the [AppServiceProvider.php](app/Providers/AppServiceProvider.php).
+Access the following urls in your browser:
+
+- `http://jaeger-demo.localhost`
+- `http://jaeger-demo.localhost/error`
+- `http://jaeger-demo.localhost/really-long-request`
+
+Then go to `http://jaeger-ui.localhost` and check the traces. 
+
+I keep the changes in the [AppServiceProvider.php](app/Providers/AppServiceProvider.php) and [web.php](routes/web.php) for brevity.
+
+Try to change the search options, fill the Tags field with something like `response_status=200`, or `error=true`, `uuid=some-request-uuid` to test it out.
